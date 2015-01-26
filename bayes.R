@@ -17,10 +17,9 @@ colnames(space)<-space.x
 space
 Pr<-space/sum(space) #funcion priori
 Po<-space/sum(space) #funcion posteri
-
 source("funcionmax.R")
 library("mvtnorm") # libreria multivariada
-solu<-funcionmax(Po)
+solu<-c()
 for(gen in 1:length(puntos.x))
 {
   Pr<-Po
@@ -29,12 +28,13 @@ for(gen in 1:length(puntos.x))
   {
     for(j in 1:length(space.x))
     {
-      temp[i,j]<-dmvnorm(c(puntos.x[gen],puntos.y[gen]),mean=c(space.y[i],space.x[j]),sigma=sigma.puntos)
+      temp.p<-dmvnorm(c(puntos.y[gen],puntos.x[gen]),mean=c(space.y[i],space.x[j]),sigma=sigma.puntos)
+      temp[i,j]<-temp.p*Pr[i,j]
     }
   }
   temp<-temp/sum(temp)
-  Po<-Pr*temp
-  solu<-rbind(solu,funcionmax(Po))
+  Po<-temp
+  solu<-rbind(solu,c(space.x[funcionmax(Po)[2]],space.y[funcionmax(Po)[1]]))
 }
 
 
