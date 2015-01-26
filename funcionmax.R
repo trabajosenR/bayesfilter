@@ -1,13 +1,16 @@
-funionmax<-function(Po)
-for(i in nrow(Po))
+funcionmax<-function(Po)
 {
-  for(j in ncol(Po))
+  salida<-c(1,1)
+  for(i in nrow(Po))
   {
-    if(Po[i,j]==max(Po))
+    for(j in ncol(Po))
     {
-      salida<-c(i,j)
-      break
+      if(Po[i,j]==max(Po))
+      {
+        salida<-c(i,j)
+      }
     }
   }
+  return(salida)
+  
 }
-return(salida)
