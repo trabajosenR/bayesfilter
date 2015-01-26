@@ -11,6 +11,5 @@ funcionmax<-function(Po)
       }
     }
   }
-  return(salida)
-  
+  return(salida) 
 }

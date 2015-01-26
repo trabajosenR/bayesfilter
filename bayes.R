@@ -35,6 +35,16 @@ for(gen in 1:length(puntos.x))
   temp<-temp/sum(temp)
   Po<-temp
   solu<-rbind(solu,c(space.x[funcionmax(Po)[2]],space.y[funcionmax(Po)[1]]))
+  
+  ## graficos
+  val.x<-rep(punto.real[1],length(puntos.x))
+  val.y<-rep(punto.real[2],gen)
+  gen.total<-1:length(puntos.x)
+  par(mfrow=c(2,1))
+  plot(1:gen,solu[,1],type="o",col="green",main="convergencia X",xlab="iteraciones",ylab="valor en X")
+  lines(gen.total,val.x,col="blue")
+  plot(1:gen,solu[,2],type="o",col="green",main="convergencia Y",xlab="iteraciones",ylab="valor en Y")
+  lines(1:gen,val.y,col="blue")
 }
 
 
