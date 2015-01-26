@@ -47,4 +47,5 @@ for(gen in 1:length(puntos.x))
   lines(1:gen,val.y,col="blue")
 }
 
+## fin 
 
