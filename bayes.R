@@ -1,5 +1,6 @@
 #### bayes filter #####
 setwd( "/Users/davidalejandro/Documents/Google Drive/R2015//bayesfilter") # se debe configurar para el caso particular
+setwd("/Users/david/Google Drive/R2015/bayesfilter")
 desvi<-2
 sigma.puntos<- matrix(c(4,0,0,4), ncol=2)
 puntos.x<-rnorm(100,0,desvi)
@@ -14,7 +15,6 @@ space.y<-seq(4,6,0.05)
 space<-matrix(1,length(space.y),length(space.x))
 rownames(space)<-space.y
 colnames(space)<-space.x
-space
 Pr<-space/sum(space) #funcion priori
 Po<-space/sum(space) #funcion posteri
 source("funcionmax.R")
