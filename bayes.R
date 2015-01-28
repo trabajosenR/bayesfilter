@@ -1,11 +1,10 @@
 #### bayes filter #####
 desvi<-2
-sigma.puntos<- matrix(c(4,0,0,4), ncol=2)
-puntos.x<-rnorm(100,0,desvi)
-puntos.y<-rnorm(100,0,desvi)
+sigma.puntos<- matrix(c(36,0,0,36), ncol=2)
+total.datos<-5000
 punto.real<-c(3,5)
-puntos.x<-rnorm(100,0,desvi)+punto.real[1]
-puntos.y<-rnorm(100,0,desvi)+punto.real[2]
+puntos.x<-rnorm(total.datos,0,desvi)+punto.real[1]
+puntos.y<-rnorm(total.datos,0,desvi)+punto.real[2]
 puntos<-cbind(puntos.x,puntos.y)
 # crear el espacio de soluciones
 space.x<-seq(2,4,0.05)
@@ -15,6 +14,10 @@ rownames(space)<-space.y
 colnames(space)<-space.x
 Pr<-space/sum(space) #funcion priori
 Po<-space/sum(space) #funcion posteri
+## grafica de los puntos
+plot(puntos.x,puntos.y)
+points(3,5,pch = 19,col = "red")
+## inicial filtro
 source("funcionmax.R")
 library("mvtnorm") # libreria multivariada
 solu<-c()
@@ -45,5 +48,14 @@ for(gen in 1:length(puntos.x))
   lines(1:gen,val.y,col="blue")
 }
 
-## fin 
+## conclusiones
+# * la primera conclusion que se tiene de este codigo fue que este tipo de enfoque depende en gran medida de una buena 
+#   estimacion de la desviacion estandar.
+# * El tamaño de la desvición estandar afecta el desempeño del algoritmo, entre más grande sea la desviación estandar más
+#   tiempo le tomará al algoritmo converger en los valores reales. 
+# * otro problema encontrado en este enfoque es que si se tiene una muy mala estimación de la desviación estandar se puede llegar a indeterminar
+#   las matrices de probabilidades.
+# * si se tiene mucha desviacion en los puntos se necesita mucha iteraciones para encontrar la el lugar donde tiene la funciones pero se puede llegar. 
+
+
 
