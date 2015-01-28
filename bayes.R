@@ -55,7 +55,8 @@ for(gen in 1:length(puntos.x))
 #   tiempo le tomará al algoritmo converger en los valores reales. 
 # * otro problema encontrado en este enfoque es que si se tiene una muy mala estimación de la desviación estandar se puede llegar a indeterminar
 #   las matrices de probabilidades.
-# * si se tiene mucha desviacion en los puntos se necesita mucha iteraciones para encontrar la el lugar donde tiene la funciones pero se puede llegar. 
+# * si se tiene mucha desviacion en los puntos y se estima poca desviacion estandar en la funcion de probablidad, se necesita mucha iteraciones para 
+#   encontrar la el lugar donde tiene la funciones pero se puede llegar. 
 
 
 
